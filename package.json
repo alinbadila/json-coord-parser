@@ -1,0 +1,11 @@
+{
+  "name": "json-coord-parser",
+  "version": "1.0.0",
+  "description": "CLI app that reads a json file from taxi app and returns coordinates of polygons",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alin Badila",
+  "license": "ISC"
+}
