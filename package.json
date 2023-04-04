@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alin Badila",
-  "license": "ISC"
+  "license": "MIT",
+  "bin":{
+    "json-coord-parser": "./bin/index.js"
+  }
 }
