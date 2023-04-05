@@ -10,8 +10,6 @@ const options = yargs.usage("Usage: -f <json file>").option("f", {
   demandOption: true,
 }).argv;
 
-console.log("Input file: ", options.filename);
-
 function jsonReader(filePath, cb) {
   fs.readFile(filePath, (err, fileData) => {
     if (err) {
@@ -32,7 +30,10 @@ jsonReader(options.filename, (err, jsonMainObject) => {
   }
 
   for (let hashId in jsonMainObject.areas) {
-    console.log(jsonMainObject["areas"][hashId]["name"]);
+    console.log(
+      jsonMainObject["areas"][hashId]["name"],
+      ';{"type":"Feature", "properties":[], "geometry":{"type":"Polygon", "coordinates":[}}'
+    );
 
     let coords = JSON.parse(jsonMainObject["areas"][hashId]["polygon"]);
 
@@ -40,6 +41,7 @@ jsonReader(options.filename, (err, jsonMainObject) => {
     coords.forEach((element) => {
       resultCoordString += "[" + element["lng"] + ", " + element["lat"] + "], ";
     });
+    resultCoordString += "]]]}}";
 
     console.log(resultCoordString);
   }
