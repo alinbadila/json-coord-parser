@@ -30,17 +30,19 @@ jsonReader(options.filename, (err, jsonMainObject) => {
   }
 
   for (let hashId in jsonMainObject.areas) {
-    console.log(
-      jsonMainObject["areas"][hashId]["name"],
-      ';{"type":"Feature", "properties":[], "geometry":{"type":"Polygon", "coordinates":[}}'
-    );
+    let resultCoordString =
+      jsonMainObject["areas"][hashId]["name"] +
+      ';{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[';
 
     let coords = JSON.parse(jsonMainObject["areas"][hashId]["polygon"]);
 
-    let resultCoordString = "[";
     coords.forEach((element) => {
-      resultCoordString += "[" + element["lng"] + ", " + element["lat"] + "], ";
+      resultCoordString += "[" + element["lng"] + "," + element["lat"] + "],";
     });
+    resultCoordString = resultCoordString.substring(
+      0,
+      resultCoordString.length - 1
+    );
     resultCoordString += "]]]}}";
 
     console.log(resultCoordString);
