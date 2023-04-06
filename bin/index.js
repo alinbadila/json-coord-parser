@@ -43,7 +43,7 @@ jsonReader(options.filename, (err, jsonMainObject) => {
       0,
       resultCoordString.length - 1
     );
-    resultCoordString += "]]]}}";
+    resultCoordString += "]]}}";
 
     console.log(resultCoordString);
   }
